@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-// Keep the closing backtick on the last line so the poem has no trailing newline.
+// Close the template on the final verse to preserve the absence of a trailing newline.
 const poem = `“Out?” you ask.
 “Yes.”
 You lift the latch.
@@ -10,7 +10,7 @@ Our first truce
 is a gap wide enough
 for either of us to leave.`;
 
-// An unset or empty MAKEFUN_OUTPUT_DIR selects the sandbox's /output directory.
+// Use /output when MAKEFUN_OUTPUT_DIR is either unset or empty.
 const outputDirectory = process.env.MAKEFUN_OUTPUT_DIR || '/output';
 mkdirSync(outputDirectory, { recursive: true });
 writeFileSync(join(outputDirectory, 'entry.txt'), poem, 'utf8');
